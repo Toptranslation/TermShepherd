@@ -1,0 +1,11 @@
+<section class="dictionary-grid">
+    @for (term of terms(); track term.id) {
+    <article class="card">
+        <div class="card-header">
+            <h3>{{ term.term }}</h3>
+            <span class="category">{{ term.category }}</span>
+        </div>
+        <p class="definition">{{ term.definition }}</p>
+    </article>
+    }
+</section>
