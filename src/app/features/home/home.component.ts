@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { TerminologyListComponent } from '../terminology/terminology-list/terminology-list.component';
+import { ProductsComponent } from '../products/products.component';
 
 @Component({
     selector: 'app-home',
-    imports: [TerminologyListComponent],
+    imports: [ProductsComponent],
     templateUrl: './home.html',
     styleUrl: './home.css',
     changeDetection: ChangeDetectionStrategy.OnPush
