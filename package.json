@@ -1,12 +1,13 @@
 {
-  "name": "terminology-landing-page",
+  "name": "term-shepherd",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "github": "ng build --output-path docs --base-href /TermShepherd/ && cp -r docs/browser/* docs/ && rm -rf docs/browser"
   },
   "prettier": {
     "printWidth": 100,
