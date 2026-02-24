@@ -1,6 +1,6 @@
 <section class="products-grid">
     @for (product of products(); track product.id) {
-    <article class="product-card" [class.featured]="product.id === 2">
+    <article class="product-card" [class.featured]="product.id === 1">
         <div class="product-image">
             <img [ngSrc]="product.image" [alt]="product.title" width="400" height="400" priority>
         </div>
@@ -8,9 +8,14 @@
             <h3>{{ product.title }}</h3>
             <p>{{ product.description }}</p>
             <div class="product-footer">
-                <button class="buy-btn">Gespräch vereinbaren</button>
+                <button class="buy-btn" (click)="openContactForm(product)">Gespräch vereinbaren</button>
             </div>
         </div>
     </article>
     }
 </section>
+
+@if (isModalOpen() && selectedProduct()) {
+<app-contact-form [selectedProductTitle]="selectedProduct()!.title" (close)="closeContactForm()">
+</app-contact-form>
+}

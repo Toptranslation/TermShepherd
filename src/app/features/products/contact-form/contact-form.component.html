@@ -1,0 +1,54 @@
+<div class="modal-overlay" (click)="onClose()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+        <button class="close-btn" (click)="onClose()">&times;</button>
+
+        @if (isSuccess()) {
+        <div class="status-view success">
+            <div class="icon-success">✓</div>
+            <h2>Vielen Dank!</h2>
+            <p>Ihre Nachricht wurde erfolgreich gesendet. Wir setzen uns in Kürze mit Ihnen in Verbindung.</p>
+            <button class="primary-btn" (click)="onClose()">Schließen</button>
+        </div>
+        } @else {
+        <h2>Gespräch vereinbaren</h2>
+        <p class="subtitle">Wir beraten Sie gerne zu <strong>{{ selectedProductTitle() }}</strong>.</p>
+
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" formControlName="name" placeholder="Ihr Name"
+                    [class.error]="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
+            </div>
+
+            <div class="form-group">
+                <label for="email">E-Mail</label>
+                <input type="email" id="email" formControlName="email" placeholder="beispiel@firma.de"
+                    [class.error]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
+            </div>
+
+            <div class="form-group">
+                <label for="text">Nachricht / Text</label>
+                <textarea id="text" formControlName="text" rows="4" placeholder="Wie können wir Ihnen helfen?"
+                    [class.error]="contactForm.get('text')?.invalid && contactForm.get('text')?.touched"></textarea>
+            </div>
+
+            @if (errorMessage()) {
+            <div class="error-banner">
+                {{ errorMessage() }}
+            </div>
+            }
+
+            <div class="form-actions">
+                <button type="button" class="cancel-btn" (click)="onClose()" [disabled]="isLoading()">Abbrechen</button>
+                <button type="submit" class="primary-btn" [disabled]="contactForm.invalid || isLoading()">
+                    @if (isLoading()) {
+                    <span class="spinner"></span> Senden...
+                    } @else {
+                    Senden
+                    }
+                </button>
+            </div>
+        </form>
+        }
+    </div>
+</div>
