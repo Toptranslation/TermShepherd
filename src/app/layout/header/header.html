@@ -1,11 +1,11 @@
 <header>
     <div class="container">
-        <a [routerLink]="['/', currentLang()]" class="logo">
+        <a routerLink="/" [queryParams]="{lang: currentLang()}" class="logo">
             <img ngSrc="TermShepherd.png" alt="TermShepherd" width="160" height="40" priority class="logo-img">
         </a>
         <nav>
             <ul>
-                <li><a [routerLink]="['/', currentLang()]" routerLinkActive="active"
+                <li><a routerLink="/" [queryParams]="{lang: currentLang()}" routerLinkActive="active"
                         [routerLinkActiveOptions]="{exact: true}">{{ t().home
                         }}</a>
                 </li>
@@ -20,12 +20,16 @@
                         </svg>
                     </button>
                     <div class="dropdown-menu">
-                        <a [routerLink]="['/', currentLang()]" fragment="why-terminology">{{ t().terminology }}</a>
-                        <a [routerLink]="['/', currentLang()]" fragment="why-now">{{ t().currency }}</a>
-                        <a [routerLink]="['/', currentLang()]" fragment="what-is-ontology">{{ t().ontology }}</a>
+                        <a routerLink="/" [queryParams]="{lang: currentLang()}" queryParamsHandling="merge"
+                            fragment="why-terminology">{{ t().terminology }}</a>
+                        <a routerLink="/" [queryParams]="{lang: currentLang()}" queryParamsHandling="merge"
+                            fragment="why-now">{{ t().currency }}</a>
+                        <a routerLink="/" [queryParams]="{lang: currentLang()}" queryParamsHandling="merge"
+                            fragment="what-is-ontology">{{ t().ontology }}</a>
                     </div>
                 </li>
-                <li><a [routerLink]="['/', currentLang()]" fragment="services">{{ t().services }}</a></li>
+                <li><a routerLink="/" [queryParams]="{lang: currentLang()}" queryParamsHandling="merge"
+                        fragment="services">{{ t().services }}</a></li>
                 <li class="dropdown lang-switcher" [class.is-open]="isLangMenuOpen()"
                     (mouseenter)="isLangMenuOpen.set(true)" (mouseleave)="isLangMenuOpen.set(false)">
                     <button class="dropdown-trigger" aria-haspopup="true" [attr.aria-expanded]="isLangMenuOpen()"
