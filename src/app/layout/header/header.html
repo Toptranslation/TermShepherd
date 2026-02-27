@@ -1,8 +1,7 @@
 <header>
     <div class="container">
         <a [routerLink]="['/', currentLang()]" class="logo">
-            <span class="logo-icon">T</span>
-            TermShepherd
+            <img ngSrc="TermShepherd.png" alt="TermShepherd" width="160" height="40" priority class="logo-img">
         </a>
         <nav>
             <ul>
@@ -21,12 +20,12 @@
                         </svg>
                     </button>
                     <div class="dropdown-menu">
-                        <a href="#why-terminology">{{ t().terminology }}</a>
-                        <a href="#why-now">{{ t().currency }}</a>
-                        <a href="#what-is-ontology">{{ t().ontology }}</a>
+                        <a [routerLink]="['/', currentLang()]" fragment="why-terminology">{{ t().terminology }}</a>
+                        <a [routerLink]="['/', currentLang()]" fragment="why-now">{{ t().currency }}</a>
+                        <a [routerLink]="['/', currentLang()]" fragment="what-is-ontology">{{ t().ontology }}</a>
                     </div>
                 </li>
-                <li><a href="#services">{{ t().services }}</a></li>
+                <li><a [routerLink]="['/', currentLang()]" fragment="services">{{ t().services }}</a></li>
                 <li class="dropdown lang-switcher" [class.is-open]="isLangMenuOpen()"
                     (mouseenter)="isLangMenuOpen.set(true)" (mouseleave)="isLangMenuOpen.set(false)">
                     <button class="dropdown-trigger" aria-haspopup="true" [attr.aria-expanded]="isLangMenuOpen()"
