@@ -1,73 +1,37 @@
 <div class="hero">
-    <img class="hero-bg" ngSrc="hero-bg.png" fill priority />
     <div class="hero-content">
-        <h1>Precision in language = Power in AI</h1>
-        <p class="hero-subtitle">Beherrsche die Terminologie, die die Zukunft der Intelligenz definiert.</p>
+        <h1>{{ hero().title }}</h1>
+        <p class="hero-subtitle">{{ hero().subtitle }}</p>
     </div>
 </div>
 
 <div class="content">
+    <h2 id="services" class="services-heading">{{ t().services_heading }}</h2>
+    <app-products></app-products>
+
     <section class="importance-section">
-        <article class="importance-article">
+        <article id="why-terminology" class="importance-article">
             <div class="article-image">
                 <img ngSrc="thema_terminologie.png" width="800" height="600" alt="Terminologie Bedeutung">
             </div>
-            <h2>Warum ist Terminologie wichtig?</h2>
-            <p>
-                In der Ära der Künstlichen Intelligenz ist präzise Sprache ein strategischer Erfolgsfaktor.
-                Terminologie ist weit mehr als eine Sammlung von Fachbegriffen – sie bildet die Grundlage für klare,
-                konsistente und skalierbare Unternehmenskommunikation. Gerade bei der KI-gestützten Texterstellung
-                und in Übersetzungsprozessen entscheidet die einheitliche Verwendung definierter Begriffe über
-                Effizienz, Qualität und Markenkonsistenz.
-            </p>
-            <p>
-                KI-Systeme liefern nur dann verlässliche Ergebnisse, wenn sie auf einer sauberen und strukturierten
-                Datenbasis aufbauen. Eine gepflegte Terminologie stellt sicher, dass Inhalte korrekt interpretiert,
-                Fachbegriffe konsistent verwendet und unternehmensspezifische Kontexte zuverlässig berücksichtigt
-                werden. So entstehen Texte, die fachlich präzise sind, zur Marke passen und sich nahtlos in
-                bestehende Kommunikationsstrukturen einfügen.
-            </p>
+            <h2>{{ t().why_terminology.title }}</h2>
+            <div [innerHTML]="t().why_terminology.description"></div>
         </article>
 
-        <article class="importance-article">
+        <article id="why-now" class="importance-article">
             <div class="article-image">
                 <img ngSrc="thema_waum_jetzt.png" width="800" height="600" alt="Dringlichkeit der Terminologie">
             </div>
-            <h3>Warum gerade jetzt?</h3>
-            <p>
-                KI-Technologien werden in rasantem Tempo in Geschäftsprozesse integriert und entwickeln sich
-                zunehmend zum festen Bestandteil unternehmerischer Wertschöpfung. Unternehmen, die ihre sprachlichen
-                Grundlagen anschließend nicht systematisch strukturieren, riskieren Inkonsistenz und unnötige
-                Korrekturschleifen.
-                Eine gepflegte Terminologie ist deshalb keine Option, sondern strategische Grundlage – für
-                effiziente Abläufe, konsistente Kommunikation und leistungsfähige, skalierbare KI-Anwendungen.
-            </p>
+            <h3>{{ t().why_now.title }}</h3>
+            <div [innerHTML]="t().why_now.description"></div>
         </article>
 
-        <article class="importance-article">
+        <article id="what-is-ontology" class="importance-article">
             <div class="article-image">
                 <img ngSrc="thema_ontologie.png" width="800" height="600" alt="Ontologie">
             </div>
-            <h3>Was ist Ontologie?</h3>
-            <p>
-                Ontologien sind formale Repräsentationen von Wissen, die Konzepte, deren Eigenschaften und Beziehungen
-                in einem bestimmten Bereich definieren. Sie bilden die semantische Grundlage für intelligente Systeme,
-                indem sie festlegen, welche Begriffe existieren, wie sie miteinander verbunden sind und welche
-                Bedeutungen sie im Kontext tragen. In der KI ermöglichen Ontologien präzise Schlussfolgerungen,
-                kontextbezogenes Verständnis und konsistente Datenverarbeitung.
-            </p>
-            <p>
-                Im Gegensatz zu einfachen Glossaren beschreiben Ontologien nicht nur einzelne Begriffe, sondern
-                strukturieren
-                Wissen hierarchisch und relational. Sie definieren Hierarchien (z.B. „Auto“ ist eine Unterklasse von
-                „Fahrzeug“), definieren Beziehungen (z.B. „arbeitet bei“ verbindet eine Person mit einem Unternehmen)
-                und legen Einschränkungen fest (z.B. „ein Mitarbeiter hat genau einen Vorgesetzten“). Diese Struktur
-                ermöglicht es KI-Systemen, Bedeutungen zu interpretieren, Zusammenhänge zu erkennen und logische
-                Schlüsse zu ziehen.
-            </p>
+            <h3>{{ t().ontology.title }}</h3>
+            <div [innerHTML]="t().ontology.description"></div>
         </article>
     </section>
-
-    <h2 id="services" class="services-heading">Unsere Leistungen</h2>
-    <app-products></app-products>
 </div>

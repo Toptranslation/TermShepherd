@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal, inject, computed } from '@angular/core';
+import { LanguageService } from '../../core/services/language.service';
 
 @Component({
     selector: 'app-footer',
@@ -8,6 +9,7 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FooterComponent {
+    private readonly langService = inject(LanguageService);
+    readonly t = computed(() => this.langService.translations().footer);
     protected readonly year = signal(new Date().getFullYear());
-    toptranslation: any;
 }

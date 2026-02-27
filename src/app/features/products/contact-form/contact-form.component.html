@@ -5,30 +5,30 @@
         @if (isSuccess()) {
         <div class="status-view success">
             <div class="icon-success">✓</div>
-            <h2>Vielen Dank!</h2>
-            <p>Ihre Nachricht wurde erfolgreich gesendet. Wir setzen uns in Kürze mit Ihnen in Verbindung.</p>
-            <button class="primary-btn" (click)="onClose()">Schließen</button>
+            <h2>{{ t().success_title }}</h2>
+            <p>{{ t().success_msg }}</p>
+            <button class="primary-btn" (click)="onClose()">{{ t().close }}</button>
         </div>
         } @else {
-        <h2>Gespräch vereinbaren</h2>
-        <p class="subtitle">Wir beraten Sie gerne zu <strong>{{ selectedProductTitle() }}</strong>.</p>
+        <h2>{{ t().title }}</h2>
+        <p class="subtitle">{{ t().subtitle }} <strong>{{ selectedProductTitle() }}</strong>.</p>
 
         <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" formControlName="name" placeholder="Ihr Name"
+                <label for="name">{{ t().labels.name }}</label>
+                <input type="text" id="name" formControlName="name" [placeholder]="t().placeholders.name"
                     [class.error]="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
             </div>
 
             <div class="form-group">
-                <label for="email">E-Mail</label>
-                <input type="email" id="email" formControlName="email" placeholder="beispiel@firma.de"
+                <label for="email">{{ t().labels.email }}</label>
+                <input type="email" id="email" formControlName="email" [placeholder]="t().placeholders.email"
                     [class.error]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
             </div>
 
             <div class="form-group">
-                <label for="text">Nachricht / Text</label>
-                <textarea id="text" formControlName="text" rows="4" placeholder="Wie können wir Ihnen helfen?"
+                <label for="text">{{ t().labels.message }}</label>
+                <textarea id="text" formControlName="text" rows="4" [placeholder]="t().placeholders.message"
                     [class.error]="contactForm.get('text')?.invalid && contactForm.get('text')?.touched"></textarea>
             </div>
 
@@ -39,12 +39,13 @@
             }
 
             <div class="form-actions">
-                <button type="button" class="cancel-btn" (click)="onClose()" [disabled]="isLoading()">Abbrechen</button>
+                <button type="button" class="cancel-btn" (click)="onClose()" [disabled]="isLoading()">{{
+                    t().buttons.cancel }}</button>
                 <button type="submit" class="primary-btn" [disabled]="contactForm.invalid || isLoading()">
                     @if (isLoading()) {
-                    <span class="spinner"></span> Senden...
+                    <span class="spinner"></span> {{ t().buttons.sending }}
                     } @else {
-                    Senden
+                    {{ t().buttons.send }}
                     }
                 </button>
             </div>

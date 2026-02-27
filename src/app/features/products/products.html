@@ -6,9 +6,9 @@
         </div>
         <div class="product-content">
             <h3>{{ product.title }}</h3>
-            <p>{{ product.description }}</p>
+            <div class="product-description" [innerHTML]="product.description"></div>
             <div class="product-footer">
-                <button class="buy-btn" (click)="openContactForm(product)">Gespräch vereinbaren</button>
+                <button class="buy-btn" (click)="openContactForm(product)">{{ t().cta }}</button>
             </div>
         </div>
     </article>

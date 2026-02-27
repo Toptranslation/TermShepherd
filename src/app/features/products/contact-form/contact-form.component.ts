@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, input, output, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output, inject, signal, computed } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { finalize } from 'rxjs/operators';
+import { LanguageService } from '../../../core/services/language.service';
 
 @Component({
     selector: 'app-contact-form',
@@ -13,6 +14,8 @@ import { finalize } from 'rxjs/operators';
 export class ContactFormComponent {
     private fb = inject(FormBuilder);
     private http = inject(HttpClient);
+    private langService = inject(LanguageService);
+    readonly t = computed(() => this.langService.translations().contact);
 
     selectedProductTitle = input.required<string>();
     close = output<void>();
@@ -47,7 +50,10 @@ export class ContactFormComponent {
                 },
                 error: (err) => {
                     console.error('API Error:', err);
-                    this.errorMessage.set('Es gab einen Fehler beim Senden Ihrer Nachricht. Bitte versuchen Sie es später erneut.');
+                    const msg = this.langService.currentLang() === 'de'
+                        ? 'Es gab einen Fehler beim Senden Ihrer Nachricht. Bitte versuchen Sie es später erneut.'
+                        : 'There was an error sending your message. Please try again later.';
+                    this.errorMessage.set(msg);
                 }
             });
     }

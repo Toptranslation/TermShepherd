@@ -4,24 +4,32 @@
 
 .hero {
     text-align: center;
-    padding: 8rem 1.5rem;
-    background-size: cover;
-    background-position: center;
+    padding: 10rem 1.5rem;
     color: white;
-    border-radius: 0 0 2rem 2rem;
+    border-radius: 0 0 4rem 4rem;
     margin-bottom: 4rem;
     position: relative;
     overflow: hidden;
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4f46e5 100%);
+    box-shadow: 0 20px 50px rgba(79, 70, 229, 0.2);
 }
 
-.hero-bg {
-    object-fit: cover;
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(79, 70, 229, 0.4) 0%, transparent 70%);
+    z-index: 1;
 }
+
 
 .hero-content {
     position: relative;
     z-index: 10;
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
@@ -44,6 +52,10 @@ h1 {
     margin: 0 auto;
     line-height: 1.6;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.importance-article {
+    scroll-margin-top: 100px;
 }
 
 .importance-section {
@@ -105,15 +117,32 @@ h1 {
     color: transparent;
 }
 
-.importance-article p {
+.importance-article div {
     font-size: 1.125rem;
     line-height: 1.8;
     color: var(--text-secondary);
     margin-bottom: 1.5rem;
 }
 
-.importance-article p:last-child {
+.importance-article div:last-child {
     margin-bottom: 0;
+}
+
+.importance-article ul {
+    margin: 1rem 0 1.5rem 1.5rem;
+    padding: 0;
+    list-style-type: disc;
+}
+
+.importance-article li {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+}
+
+.importance-article li::marker {
+    color: var(--primary-color);
 }
 
 @media (max-width: 968px) {
