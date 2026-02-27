@@ -27,6 +27,12 @@
             </div>
 
             <div class="form-group">
+                <label for="phone">{{ t().labels.phone }}</label>
+                <input type="tel" id="phone" formControlName="phone" [placeholder]="t().placeholders.phone"
+                    [class.error]="contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched">
+            </div>
+
+            <div class="form-group">
                 <label for="text">{{ t().labels.message }}</label>
                 <textarea id="text" formControlName="text" rows="4" [placeholder]="t().placeholders.message"
                     [class.error]="contactForm.get('text')?.invalid && contactForm.get('text')?.touched"></textarea>

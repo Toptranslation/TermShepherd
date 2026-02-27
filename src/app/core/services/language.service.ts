@@ -156,11 +156,13 @@ const DE = {
         labels: {
             name: 'Name',
             email: 'E-Mail',
+            phone: 'Telefon',
             message: 'Nachricht / Text'
         },
         placeholders: {
             name: 'Ihr Name',
             email: 'beispiel@firma.de',
+            phone: 'Ihr Telefon',
             message: 'Wie können wir Ihnen helfen?'
         },
         buttons: {
@@ -265,11 +267,13 @@ const EN = {
         labels: {
             name: 'Name',
             email: 'Email',
+            phone: 'Phone',
             message: 'Message / Text'
         },
         placeholders: {
             name: 'Your Name',
             email: 'example@company.com',
+            phone: 'Your Phone',
             message: 'How can we help you?'
         },
         buttons: {
