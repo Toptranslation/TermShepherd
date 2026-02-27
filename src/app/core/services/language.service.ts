@@ -1,4 +1,6 @@
-import { Injectable, signal, computed } from '@angular/core';
+import { Injectable, signal, computed, inject } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 export type Lang = 'de' | 'en';
 
@@ -6,7 +8,24 @@ export type Lang = 'de' | 'en';
     providedIn: 'root'
 })
 export class LanguageService {
+    private readonly router = inject(Router);
     readonly currentLang = signal<Lang>('de');
+
+    constructor() {
+        this.router.events.pipe(
+            filter((event): event is NavigationEnd => event instanceof NavigationEnd)
+        ).subscribe((event) => {
+            const path = event.urlAfterRedirects;
+            const match = path.match(/^\/([^\/#?]+)/);
+            const lang = match ? match[1] : null;
+
+            if (lang === 'en' || lang === 'de') {
+                if (this.currentLang() !== lang) {
+                    this.currentLang.set(lang);
+                }
+            }
+        });
+    }
 
     readonly translations = computed(() => {
         const lang = this.currentLang();
@@ -14,7 +33,14 @@ export class LanguageService {
     });
 
     setLanguage(lang: Lang) {
-        this.currentLang.set(lang);
+        const currentUrl = this.router.url;
+        // If current path starts with /de or /en, replace it
+        if (currentUrl.match(/^\/(de|en)/)) {
+            const newUrl = currentUrl.replace(/^\/(de|en)/, `/${lang}`);
+            this.router.navigateByUrl(newUrl);
+        } else {
+            this.router.navigate([`/${lang}`]);
+        }
     }
 }
 

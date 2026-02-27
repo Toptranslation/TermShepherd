@@ -1,12 +1,13 @@
 <header>
     <div class="container">
-        <a routerLink="/" class="logo">
+        <a [routerLink]="['/', currentLang()]" class="logo">
             <span class="logo-icon">T</span>
             TermShepherd
         </a>
         <nav>
             <ul>
-                <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{ t().home
+                <li><a [routerLink]="['/', currentLang()]" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{exact: true}">{{ t().home
                         }}</a>
                 </li>
                 <li class="dropdown" [class.is-open]="isThemenMenuOpen()" (mouseenter)="isThemenMenuOpen.set(true)"
